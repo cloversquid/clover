@@ -1,0 +1,116 @@
+# Brainstorm for Final Project for Astro Python Decal (Astron 98)
+## UC Berkeley, Spring 2026
+### Clover Lee
+
+=============================================================================================================
+
+1. List 5 topics related to astronomy, physics, technology, science, or math that sound interesting to you.
+    1. Moon Phase Predictor/Video Game
+        - Predictor: You give a date and it will show you the phase of the moon, 
+                    and perhaps interesting facts or events related to the moon on the date
+        - Video Game: You are given the information, and then you have to !!!shoot the moon!!!
+                      so that it is the correct shape for the given date
+    2. Sunspot Cycle Analysis
+        - User inputs what dates they would like to see information about sunspots, and it will
+          generate a graph and a blurb of information about that range of data
+    3. Orbit Simulators
+        - Create your own solar system! Orbit modeling with user defined objects
+    4. Meteor Impact Crater Distribution on the Moon
+        - Why the heck the moon look like that?: A Science Analysis
+    5. Moon/Sun Ratio over time
+        - The sun and moon are, weirdly, almost exactly the same size in the sky. The sun is 400x bigger than
+        the Moon, but is also 400x further away than the Moon from our POV. 
+        We know its been different and will be different someday, so what will solar/lunar eclipses look like 
+        in the future, and what did they look like in the past? 
+
+=============================================================================================================
+
+2. For three of these topics, find a dataset, tool, news article, or paper online that relates to it. 
+    1. Moon Phase Predictor/Video Game
+        - matplotlib has built in animation support
+        - Astropy and Skyfield will have ways to access Sun/Moon positions for many dataset
+    2. Orbit Simulator
+        - Can make 3D animation with Panda3D or Ursina
+        - https://phet.colorado.edu/sims/html/my-solar-system/latest/my-solar-system_all.html
+            -> someone already did that, nice
+    3. Moon/Sun Ratio over time
+        - Can make 2D simlation with matplotlib or 3D simulation with Panda3D or Ursina
+        - https://www.astronomy.com/science/why-is-the-moon-exactly-the-same-apparent-size-from-earth-as-the-sun-surely-this-cannot-be-just-coincidence-the-odds-against-such-a-perfect-match-are-enormous/
+            -> Sun is 400 times bigger than Moon, but Moon is 400 times closer
+        - https://www.space.com/37627-total-solar-eclipse-earth-moon-alignment-future.html? 
+            -> last solar eclipse will be in 600 million years (that really isnt all that long huh)
+            -> explains that the moon is grdually moving away from earth, qhich will eventually make the total solar
+            eclipses impossible. supporting evidence for sun and moon changing apparent size over time. 
+        - apparent angular diameter of objects: theta = D/d, where D is true diameter and d is the distance from observer
+        - https://www.livescience.com/is-earth-moving-closer-farther-sun
+            -> earth is moving away from the sun over time (~6 centimeters/yr)
+            -> sun is shrinking
+            -> sun lifespan is 5 billion years
+            -> sun is getting ~6% brighter/hotter every billion years
+        - calculate data for average number of solar eclipses per frequency, and how it will decrease over time
+        - time ->
+            - sun diameter decreases
+            - moon gets further from earth
+            - earth gets further from sun
+        - time <- 
+            - sun diameter increases
+            - moon gets close (when did the moon show up)
+            - earth was closer to the sun? how much closer?
+            - what's the solar system creation timeline, magnitude? how long ago was the first-ish year of 
+            stable earth, moon, sun orbit? how big were these objects back then and how far apart were they?
+        
+=============================================================================================================
+
+3. Choose one topic and brainstorm how you could use Python skills to explore, analyze, or create something 
+   with it. 
+    - Moon/Sun Ratio Over Time 
+    I want to compare how the apparent angular size of the Moon and Sun change over time, and explore how that
+    affects total solar eclipses. I could use Python to:
+            -> calculate angular diameter
+            -> compare ratios
+            -> make plots
+            -> animate circles
+    -> use numpy for calculations, matplotlib for visualization, pull data from astroquery.jplhorizons
+        https://ssd.jpl.nasa.gov/horizons/
+        
+
+=============================================================================================================
+    
+4. Write down at least two possible project ideas connected to your topic. One should be ambitious and the 
+other should be a smaller, simpler version that you could realistically finish in a few weeks. 
+
+Project Ideas for Moon/Sun Ratio Over Time: 
+       1. Ambitious: 
+       - Model how the apparent angular sized of the Moon and Sun evolve over geological time and 
+        how this affects the frequency of total eclipses. This would include many physical effectrs, including:
+            - moon recession (moving slowly further from Earth over time)
+            - solar evolution (change in solar luminosity and radius)
+            - earth orbital change (earth moving away from the sun over time)
+            - eclipse frequency (this will become less frequent due to the other factors above)
+            - past and future geology (estimating when the Moon may have first been large enough, and when it 
+            will be too small)
+            - 3D simulation
+
+        2. Simpler: 
+        - Model how the apparent angular sizes of the Moon and Sun change over time using this approximation: 
+            -> How does (Theta_Moon)/(Theta_Sun) change over time, where Theta ~= D/d, where D is true diameter 
+            and d is distance from observer?
+            -> Would use just a simple approximation of lunar recession (include difference in distance compared
+             to now). Moon recession ~= 3.8cm/yr. 
+               Not taking into account solar evolution, earth orbital changes 
+            -> Include a 2D figure that shows the Moon superimposed against the Sun over time, showing how much of
+            the Sun would extend beyond the Moon as the Moon's apparent size decreases. total to annular.
+            -> Give a simple "yes or no" after user inputs date. Just says if total eclipses are possible 
+               at that time or if only annular eclipses. 
+               Would be downgrading from "frequency of total eclipses" to just "yes or no". 
+            -> 3 plots: 
+                1. Moon angular diameter vs time
+                2. Moon/Sun angular size ratio vs time
+                3. Visual comparison of Sun and Moon disks superimposed
+            -> use numpy for calculations, matplotlib for visualization, pull data from astroquery.jplhorizons
+                https://ssd.jpl.nasa.gov/horizons/
+
+
+
+
+
